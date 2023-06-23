@@ -2,7 +2,7 @@ NAME = fdf
 
 SRC_DIR = ./
 
-INCLUDE = /usr/local/include/minilibx/
+INCLUDE = -I /usr/local/include/minilibx/ -I ./includes/
 
 LIB_DIR = /usr/local/lib/minilibx
 
@@ -20,7 +20,7 @@ all : $(NAME)
 bonus : $(NAME_BONUS)
 
 %.o: %.c
-	$(CC) $(CFLAGS) -I $(INCLUDE) -Imlx_linux -O3 -c $< -o $@
+	$(CC) $(CFLAGS) $(INCLUDE) -Imlx_linux -O3 -c $< -o $@
 
 $(NAME) : $(OBJ_FILES)
 	$(CC) $(OBJ_FILES) -Lmlx_linux -lmlx_Linux -L$(LIB_DIR) -Imlx_linux -lXext -lX11 -lm -lz -o $(NAME)

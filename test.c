@@ -20,7 +20,7 @@ typedef struct	s_point {
 	int	z;
 	int	connected;
 }
-void close(int keycode, t_vars *vars)
+int close(int keycode, t_vars *vars)
 {
 	mlx_destroy_window(vars->mlx, vars->win);
 	return (0);
@@ -38,20 +38,20 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 
 void	readfile(char *pathname, char **file)
 {
-	int		count;
 	int		n_rows;
 	int		n_cols;
 	char	buf[1];
 	int		fd;
 
 	fd = open("./test_maps/42.fdf", O_RDWR);
-	count = 0;
-	while (buf[0] != '\0')
+	n_rows = 0;
+	while (read(fd, buf, 1))
 	{
-		read(fd, buf, 1);
-		count++;
+		if (buf[1] == '\n')
+			n_rows++;
 	}
-	n_rows = count;
+	close(fd);
+	fd = open("./test_maps/42.fdf", O_RDWR);
 	while (1)
 	{
 	}
