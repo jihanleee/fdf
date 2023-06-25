@@ -6,7 +6,7 @@
 #    By: jihalee <jihalee@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/01 02:52:38 by jihalee           #+#    #+#              #
-#    Updated: 2023/05/08 15:16:05 by jihalee          ###   ########.fr        #
+#    Updated: 2023/06/24 19:38:22 by jihalee          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,12 +39,8 @@ all : ${NAME}
 bonus : $(OBJS) $(OBJS_BONUS)
 	ar -rcs $(NAME) $(OBJS) $(OBJS_BONUS)
 
-so:
-	$(CC) -nostartfiles -fPIC $(CFLAGS) $(SRCS)
-	gcc -nostartfiles -shared -o libft.so $(OBJS)
-
 .c.o :
-	${CC} ${CFLAGS} -c $< -o $@
+	${CC} ${CFLAGS} -I ../includes -c $< -o $@
 
 $(NAME) : ${OBJS}
 	ar -rcs ${NAME} ${OBJS}
