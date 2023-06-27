@@ -120,9 +120,9 @@ void	line_to_coor(t_map *map, char **line, int i)
 	j = 0;
 	while (line[j])
 	{
-		map->vertices[i][j].x = 10 * (j - (map->n_cols / 2));
-		map->vertices[i][j].y = 10 * (i - (map->n_rows / 2));
-		map->vertices[i][j].z = 1 * (ft_atoi(line[j]));
+		map->vertices[i][j].x = 50 * (j - (map->n_cols / 2));
+		map->vertices[i][j].y = 50 * (i - (map->n_rows / 2));
+		map->vertices[i][j].z = 5 * (ft_atoi(line[j]));
 		j++;
 	}
 }
@@ -265,6 +265,15 @@ void	place_vertices(t_data *img, t_map *map)
 	}
 }
 
+void	draw_line(int start_x, int start_y, int end_x, int end_y)
+{
+
+}
+
+void	octant_1(int start_x, int start_y, int end_x, int end_y)
+{
+	float	t;
+}
 int	main(void)
 {
 	t_vars	vars;
@@ -280,7 +289,8 @@ int	main(void)
 		return (0);
 	print_coor(&map);
 	ft_printf("n_row %d, n_col %d", map.n_rows, map.n_cols);
- 	rotate_around_y(&map, 45);
+ 	rotate_around_x(&map, 80);
+	rotate_around_z(&map, 45);
 	print_coor(&map);
 	vars.mlx = mlx_init();
 	vars.win = mlx_new_window(vars.mlx, 1920, 1080, "Hello world!");

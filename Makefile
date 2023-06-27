@@ -2,11 +2,13 @@ NAME = fdf
 
 SRC_DIR = ./
 
-INCLUDE = -I /usr/local/include/minilibx/ -I ./includes/
+INCLUDE = -I ./minilibx-linux/ -I ./includes/
 
-LIB_DIR = /usr/local/lib/minilibx/
+DIR_MLX = ./minilibx-linux/
 
 LIBFT = ./libft/libft.a
+
+LIBMLX = ./minilibx-linux/libmlx.a
 
 DIR_LIBFT = ./libft/
 
@@ -40,14 +42,17 @@ all : $(NAME)
 $(LIBFT) : ${OBJ_FILES_LIBFT}
 	ar -rcs ${LIBFT} ${OBJ_FILES_LIBFT}
 
-$(NAME) : $(OBJ_FILES) $(LIBFT)
-	$(CC) -o $(NAME) $(OBJ_FILES) -L$(LIB_DIR) -lmlx_Linux $(INCLUDE) -Imlx_linux -lXext -lX11 -lm -lz -L$(DIR_LIBFT) -lft
+$(LIBMLX) :
+	$(MAKE) -C $(DIR_MLX)
+
+$(NAME) : $(OBJ_FILES) $(LIBFT) $(LIBMLX)
+	$(CC) -o $(NAME) $(OBJ_FILES) -L$(DIR_MLX) -lmlx $(INCLUDE) -Imlx_linux -lXext -lX11 -lm -lz -L$(DIR_LIBFT) -lft
 
 clean :
-	rm -f *.o */*.o
+	rm -f *.o */*.o 
 
 fclean : clean
-	rm -f $(NAME) $(LIBFT)
+	rm -f $(NAME) $(LIBFT) $(LIBMLX) $(DIR_MLX)obj/*.o
 
 re : fclean all
 
