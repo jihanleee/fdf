@@ -6,7 +6,7 @@
 /*   By: jihalee <jihalee@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 15:43:31 by jihalee           #+#    #+#             */
-/*   Updated: 2023/06/24 18:32:16 by jihalee          ###   ########.fr       */
+/*   Updated: 2023/07/04 00:11:01 by jihalee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,5 +76,5 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 /*c projects*/
 char	*get_next_line(int fd);
 int		ft_printf(const char *s, ...);
-
+int		ft_atoi_base(char *str, char *base);
 #endif

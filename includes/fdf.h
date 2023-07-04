@@ -6,13 +6,14 @@
 /*   By: jihalee <jihalee@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/21 21:01:19 by jihalee           #+#    #+#             */
-/*   Updated: 2023/06/26 00:06:08 by jihalee          ###   ########.fr       */
+/*   Updated: 2023/07/04 00:39:52 by jihalee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FDF_H
 # define FDF_H
 # include <mlx.h>
+# include <mlx_int.h>
 # include <unistd.h>
 # include <fcntl.h>
 # ifndef __USE_MISC
@@ -34,24 +35,39 @@ typedef struct	s_data
 
 typedef struct	s_vars
 {
-	void	*mlx;
-	void	*win;
+	t_xvar		*mlx;
+	t_win_list	*win;
+	t_data		img;
 }				t_vars;
 
-typedef struct	s_vertices
+typedef struct	s_vectors
 {
-	int	x;
-	int	y;
-	int	z;
+	float	x;
+	float	y;
+	float	z;
 	int	color;
-}				t_vertices;
+	int	r;
+	int	g;
+	int	b;
+}				t_vector;
 
 typedef struct s_map
 {
 	int			n_rows;
 	int			n_cols;
+	t_vector	r_x;
+	t_vector	r_y;
+	t_vector	r_z;
+	int			center_x;
+	int			center_y;
+	float		rotation_x;
+	float		rotation_y;
+	float		rotation_z;
+	float		height;
+	int			size;
 	char		**file;
-	t_vertices	**vertices;
+	t_vector	**vectors;
+	t_vector	**output;
 }			t_map;
 
 #endif

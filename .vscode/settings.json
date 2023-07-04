@@ -2,6 +2,11 @@
 	"files.associations": {
 		"chrono": "c",
 		"algorithm": "c",
-		"unistd.h": "c"
+		"unistd.h": "c",
+		"fdf.h": "c",
+		"stdio.h": "c",
+		"random": "c",
+		"mlx_int.h": "c",
+		"mlx.h": "c"
 	}
 }
