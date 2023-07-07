@@ -1,6 +1,6 @@
 NAME = fdf
 
-SRC_DIR = ./
+SRC_DIR = ./srcs/
 
 INCLUDE = -I ./minilibx-linux/ -I ./includes/
 
@@ -24,7 +24,8 @@ SRC_FILES_LIBFT = $(addprefix $(DIR_LIBFT), $(SRC_LIBFT))
 
 OBJ_FILES_LIBFT = $(SRC_FILES_LIBFT:.c=.o)
 
-SRCS = test.c
+SRCS = bresenham.c draw.c end_process.c key_hook.c linear_interpolation.c\
+main.c matrix_1.c matrix_2.c parse_file_1.c parse_file_2.c render.c
 
 SRC_FILES = $(addprefix $(SRC_DIR), $(SRCS))
 
@@ -32,7 +33,7 @@ OBJ_FILES = $(SRC_FILES:.c=.o)
 
 CC = cc
 
-CFLAGS = -g#-Wextra -Werror -Wall
+CFLAGS = -g -Wextra -Werror -Wall
 
 all : $(NAME)
 
@@ -43,7 +44,7 @@ $(LIBFT) : ${OBJ_FILES_LIBFT}
 	ar -rcs ${LIBFT} ${OBJ_FILES_LIBFT}
 
 $(LIBMLX) :
-	$(MAKE) -C $(DIR_MLX)
+	@$(MAKE) -C $(DIR_MLX)
 
 $(NAME) : $(OBJ_FILES) $(LIBFT) $(LIBMLX)
 	$(CC) -o $(NAME) $(OBJ_FILES) -L$(DIR_MLX) -lmlx_Linux $(INCLUDE) -Imlx_linux -lXext -lX11 -lm -lz -L$(DIR_LIBFT) -lft
